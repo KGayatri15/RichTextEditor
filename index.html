@@ -4,8 +4,10 @@
 <title>Rich Text Editor</title>
 <script src="https://kit.fontawesome.com/d8ebd8f143.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src = "index.js"></script>
+<script type="text/javascript" src="model.js"></script>
+<script type="text/javascript" src="view.js"></script>
+<script type="text/javascript" src="controller.js"></script>
 <style type="text/css">
-#toolBar1 select { font-size:14px; }
 #textBox {
   width: 700px;
   height: 500px;
@@ -16,72 +18,20 @@
 </style>
 </head>
 <body onload="initDoc();">
-<input type="hidden" name="myDoc">
-<div id="toolBar1">
-<select onchange="formatDoc('formatblock',this[this.selectedIndex].value);this.selectedIndex=0;">
-<option selected><b>Formatting</b></option>
-<option value="h1">Title 1 &lt;h1&gt;</option>
-<option value="h2">Title 2 &lt;h2&gt;</option>
-<option value="h3">Title 3 &lt;h3&gt;</option>
-<option value="h4">Title 4 &lt;h4&gt;</option>
-<option value="h5">Title 5 &lt;h5&gt;</option>
-<option value="h6">Subtitle &lt;h6&gt;</option>
-<option value="p">Paragraph &lt;p&gt;</option>
-<option value="pre">Preformatted &lt;pre&gt;</option>
-</select>
-<select onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
-<option class="heading" selected>- font -</option>
-<option>Arial</option>
-<option>Arial Black</option>
-<option>Courier New</option>
-<option>Times New Roman</option>
-</select>
-<select onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
-<option class="heading" selected>- size -</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-</select>
-<select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
-<option class="heading" selected>- color -</option>
-<option value="red">Red</option>
-<option value="blue">Blue</option>
-<option value="green">Green</option>
-<option value="black">Black</option>
-</select>
-<select onchange="formatDoc('backcolor',this[this.selectedIndex].value);this.selectedIndex=0;">
-<option class="heading" selected>- background -</option>
-<option value="red">Red</option>
-<option value="green">Green</option>
-<option value="black">Black</option>
-</select>
-</div>
+<div id="toolBar1"></div>
 <br>
-<div id="toolBar2">
-  <button onclick="formatDoc('undo');"><i class="fa fa-undo"></i></button>
-  <button onclick="formatDoc('redo');"><i class="fa fa-redo"></i></button>
-  <button onclick="formatDoc('bold');"><i class="fa fa-bold"></i></button>
-  <button onclick="formatDoc('italic');"><i class="fa fa-italic"></i></button>
-  <button onclick="formatDoc('underline');"><i class="fa fa-underline"></i></button>
-  <button onclick="formatDoc('strikeThrough');"><i class="fa fa-strikethrough"></i></button>
-  <button onclick="formatDoc('justifyleft');"><i class="fa fa-align-left"></i></button>
-  <button onclick="formatDoc('justifyright');"><i class="fa fa-align-right"></i></button>
-  <button onclick="formatDoc('justifycenter');"><i class="fa fa-align-center"></i></button>
-  <button onclick="formatDoc('justifyall');"><i class="fa fa-align-justify"></i></button>
-  <button onclick="formatDoc ('insertUnorderedList');"><i class="fa fa-list-ul"></i></button>
-  <button onclick="formatDoc('insertOrderedList');"><i class="fa fa-list-ol"></i></button>
-  <button onclick="formatDoc('indent');"><i class="fa fa-indent"></i></button>
-  <button onclick="formatDoc('outdent');"><i class="fa fa-outdent"></i></button>
-  <button onclick="formatDoc('cut');"><i class="fa fa-cut"></i></button>
-  <button onclick="formatDoc('copy');"><i class="fa fa-copy"></i></button>
-  <button onclick="formatDoc('paste');"><i class="fa fa-paste"></i></button> 
-  <button onclick="oDoc.innerHTML=sDefTxt;"><i class="fa fa-broom"></i></button> 
-</div>
+<div id="toolBar2"></div>
 <br>
 <div id="textBox" contenteditable="true"></div>
 </body>
+<script>
+window.addEventListener('load',()=>{
+  const model = new Model();
+  view = new View(model,{
+    'toolbar1':document.getElementById('toolBar1'),
+    'toolbar2':document.getElementById('toolBar2')
+  }),
+  controller = new Controller(model,view);
+})
+</script>
 </html>
