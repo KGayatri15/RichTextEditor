@@ -60,7 +60,7 @@
 <option value="black">Black</option>
 </select>
 </div>
-<br/>
+<br>
 <div id="toolBar2">
   <button onclick="formatDoc('undo');"><i class="fa fa-undo"></i></button>
   <button onclick="formatDoc('redo');"><i class="fa fa-redo"></i></button>
@@ -79,7 +79,9 @@
   <button onclick="formatDoc('cut');"><i class="fa fa-cut"></i></button>
   <button onclick="formatDoc('copy');"><i class="fa fa-copy"></i></button>
   <button onclick="formatDoc('paste');"><i class="fa fa-paste"></i></button> 
+  <button onclick="oDoc.innerHTML=sDefTxt;"><i class="fa fa-broom"></i></button> 
 </div>
-<div id="textBox" contenteditable="true"><p>Lorem ipsum</p></div>
+<br>
+<div id="textBox" contenteditable="true"></div>
 </body>
 </html>
