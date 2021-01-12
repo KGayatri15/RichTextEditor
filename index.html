@@ -3,7 +3,6 @@
 <head>
 <title>Rich Text Editor</title>
 <script src="https://kit.fontawesome.com/d8ebd8f143.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src = "index.js"></script>
 <script type="text/javascript" src="model.js"></script>
 <script type="text/javascript" src="view.js"></script>
 <script type="text/javascript" src="controller.js"></script>
@@ -17,19 +16,22 @@
 }
 </style>
 </head>
-<body onload="initDoc();">
+<body>
 <div id="toolBar1"></div>
 <br>
 <div id="toolBar2"></div>
 <br>
 <div id="textBox" contenteditable="true"></div>
+<button id = "save">Save Content</button>
 </body>
 <script>
 window.addEventListener('load',()=>{
   const model = new Model();
   view = new View(model,{
+    'text':document.getElementById("textBox"),
     'toolbar1':document.getElementById('toolBar1'),
-    'toolbar2':document.getElementById('toolBar2')
+    'toolbar2':document.getElementById('toolBar2'),
+    'button':document.getElementById('save')
   }),
   controller = new Controller(model,view);
 })

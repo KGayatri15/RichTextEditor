@@ -20,7 +20,7 @@ var toolbar2 = {
   "justifyleft":"fa fa-align-left",
   "justifyright":"fa fa-align-right",
   "justifycenter":"fa fa-align-center",
-  "justifyall":"fa fa-align-all",
+  "justifyall":"fa fa-align-justify",
   "insertUnorderedList":"fa fa-list-ul",
   "insertOrderedList":"fa fa-list-ol",
   "indent":"fa fa-indent",
@@ -54,10 +54,16 @@ var toolbar1 = {
 class Model extends EventEmitter{
   constructor(){
     super();
+    this._Data = "";
     this.Toolbar1Items = toolbar1;
     this.Toolbar2Items = toolbar2;
   }
   static formatDoc(command, value) {
     document.execCommand(command, false, value); 
- }
+  }
+  setData(data){
+    this._Data = data;
+    this.emit('SaveData',data);
+  }
+
 }
