@@ -90,12 +90,14 @@ myEmitter.on('status', (code, msg) => console.log(`Got ${code} and ${msg}`));
 
 // // Emit 'eventOnce' -> After this the eventOnce will be 
 // // removed/unregistered automatically
-// myEmitter.emit('eventOnce');
+myEmitter.emit('eventOnce');
+myEmitter.emit('eventOnce');
+myEmitter.emit('eventOnce');
 
 
 // myEmitter.emit('eventOne');
-// myEmitter.emit('init');
-// myEmitter.emit('init'); // Will not be fired
+ myEmitter.emit('init');
+ myEmitter.emit('init'); // Will not be fired
 // myEmitter.emit('eventOne');
 // myEmitter.emit('status', 200, 'ok');
 
