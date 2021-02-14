@@ -16,6 +16,16 @@ class actionEventEmitter {
         this.listeners[event].push(fn);
         return this;
     }
+    createListeners(entity) {
+        console.log(entity)
+        let events = dataHelpers.find(entity, 'on')
+        console.log(events)
+
+        events.forEach((evt) => {
+            window[evt] = this.conductEvent
+        })
+    }
+
 /**
  * This is just an alias to the ‘addListener’ method.
  *  We will be using the ‘on’ method more than the ‘addListener’ method for the sake of convenience.
