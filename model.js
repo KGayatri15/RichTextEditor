@@ -1,15 +1,16 @@
 class EventEmitter {
     constructor() {
-      this._events = {};
+      this._events = {};///WE look here for Event and action Mapping
     }
-    on(evt, listener) {
+    on(evt, listener) { //eventIdetifier
       (this._events[evt] || (this._events[evt] = [])).push(listener);
       return this;
     }
-    emit(evt, arg) {
+    emit(evt, arg) { //trigger
       (this._events[evt] || []).slice().forEach(lsn => lsn(arg));
     }
 }
+
 var toolbar2 = {
   "undo":"fa fa-undo",
   "redo":"fa fa-redo",
@@ -51,6 +52,7 @@ var toolbar1 = {
     "values":["Red","Green","Black"]
   }
 }
+
 class Model extends EventEmitter{
   constructor(){
     super();
